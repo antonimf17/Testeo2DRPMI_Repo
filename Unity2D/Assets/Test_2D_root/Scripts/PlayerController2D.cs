@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.InputSystem; //Libreria para que funcione el New Input System
 
 public class PlayerController2D : MonoBehaviour
 {
-    //Referencias a las antiguas inputs
-    public float horInput;
+       //Referencias Generales  //SeriazlizedField hace que sea privado pero se vea en el inspector
+           [SerializeField] Rigidbody2D playerRB; //Referencia al rigidbody del player
+    [SerializeField] PlayerInput playerInput; //Referencia al gestor del input del jugador
 
 
-
-    //Referencias Generales  //SeriazlizedField hace que sea privado pero se vea en el inspector
-
-    [SerializeField] Rigidbody2D playerRB; //Referencia al rigidbody del player
 
     [Header("Movement Parameters")]
+    private Vector2 moveInput; //Almacén del input del player
     public float Speed;
+    
 
     [Header("Jump parameters")]
     public float jumpForce;
@@ -25,14 +25,15 @@ public class PlayerController2D : MonoBehaviour
     {
         //autoreferenciar componentes: nombre de variable = GetComponent()
         playerRB = GetComponent<Rigidbody2D>();
+        playerInput = GetComponent<PlayerInput>();
+
+       
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        horInput = Input.GetAxis("Horizontal");
-        Jump();
 
     }
 
@@ -44,20 +45,50 @@ public class PlayerController2D : MonoBehaviour
 
     void Movement()
     {
-        playerRB.velocity = new Vector3(horInput * Speed, playerRB.velocity.y, 0);
-
-
+     playerRB.velocity = new Vector3(moveInput.x * Speed, playerRB.velocity.y, 0);
+      
     }
-    void Jump()
+  
+
+    #region Input Events
+    //Para Crear un evento
+    //Se define Public sin tiop de dato (Void) y con una referencia al input (Callback.Context)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+
+        if (context.started)
         {
             playerRB.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+
         }
-    }    
+    }
+        
+    }
 
 
-}
+
+
+
+
+
+    #endregion
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

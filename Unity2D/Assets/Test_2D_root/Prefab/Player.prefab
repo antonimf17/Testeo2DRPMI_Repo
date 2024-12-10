@@ -184,10 +184,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a0bb140ecb152b43a059e03aabab3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horInput: 0
   playerRB: {fileID: 0}
+  playerInput: {fileID: 0}
   Speed: 8
-  jumpForce: 5
+  jumpForce: 4
   isGrounded: 0
 --- !u!114 &4336785677770504677
 MonoBehaviour:
@@ -213,7 +213,43 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5455037205118582977}
+        m_TargetAssemblyTypeName: PlayerController2D, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4cce5b5f-053f-4c77-858f-3b7dcf745fff
+    m_ActionName: Gameplay/Movement[/DualShock4GamepadHID/leftStick,/XInputControllerWindows/leftStick,/DualShock4GamepadHID/dpad,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5455037205118582977}
+        m_TargetAssemblyTypeName: PlayerController2D, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 22bf5e1a-0c63-4349-ab45-f5c9f4e09700
+    m_ActionName: Gameplay/Jump[/DualShock4GamepadHID/buttonSouth,/XInputControllerWindows/buttonSouth,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3c3761d2-5798-4fa0-a57a-1dbb8fd9db10
+    m_ActionName: UI/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: BasicScheme
   m_DefaultActionMap: Gameplay
