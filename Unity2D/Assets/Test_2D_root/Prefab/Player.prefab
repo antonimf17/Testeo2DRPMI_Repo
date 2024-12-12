@@ -186,9 +186,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
   playerInput: {fileID: 0}
+  PlayerAnim: {fileID: 0}
   Speed: 8
+  isFacingRight: 0
   jumpForce: 4
-  isGrounded: 0
+  isGrounded: 1
 --- !u!114 &4336785677770504677
 MonoBehaviour:
   m_ObjectHideFlags: 0
